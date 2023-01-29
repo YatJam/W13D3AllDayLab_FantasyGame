@@ -1,39 +1,36 @@
 package Game;
 
+import player.Player;
+import room.Dungeon;
+import room.Room;
 import room.RoomExit;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public abstract class GameManager {
+public class GameManager {
 
-    private final List<RoomExit> roomExitList;
-    private RoomExit nextRoom;
+    private Dungeon dungeon;
+    private Player player1;
+    private int currentRoomNumber;
 
-
-
-
-    public GameManager() {
-       this.roomExitList = Arrays.asList(RoomExit.EAST, RoomExit.SOUTH, RoomExit.WEST, RoomExit.NORTH);
-       this.nextRoom = null;
+    public GameManager(Dungeon dungeon, Player player1) {
+        this.dungeon = dungeon;
+        this.player1 = player1;
+        this.currentRoomNumber = 0;
+        this.dungeon.getRoomList().get(currentRoomNumber).addPlayerToRoom(player1);
     }
 
-    public List<RoomExit> getRoomExitList() {
-        return this.roomExitList;
+    public Dungeon getDungeon() {
+        return this.dungeon;
     }
 
-    public void getRandomRoom(){
-        Random rand = new Random();
-       RoomExit randomExit = roomExitList.get(rand.nextInt(roomExitList.size()));
-       this.nextRoom = randomExit;
-    }
-
-    public RoomExit getNextRoom() {
-        return this.nextRoom;
-    }
-
-    public void setNextRoom(RoomExit nextRoom) {
-        this.nextRoom = nextRoom;
+    public void playerMoveToNextRoom(Player player1){
+        this.dungeon.getRoomList().get(currentRoomNumber).removePlayerFromRoom(player1);
+        this.currentRoomNumber += 1;
+        dungeon.getRoomList().get(currentRoomNumber).addPlayerToRoom(player1);
     }
 }
+

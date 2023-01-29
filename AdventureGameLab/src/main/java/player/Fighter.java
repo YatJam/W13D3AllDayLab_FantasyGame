@@ -1,30 +1,42 @@
 package player;
 
-import behaviours.IWeapon;
-import enemy.Enemy;
+import behaviours.IBattleCry;
+import randomEvents.Enemy;
+import room.Room;
+import weapon.Weapon;
 
-public abstract class Fighter extends Player {
+import java.util.Random;
 
-    private IWeapon iWeapon;
+public abstract class Fighter extends Player implements IBattleCry {
 
-    public Fighter(String name, int healthPoints, IWeapon iWeapon) {
-        super(name, healthPoints);
-        this.iWeapon = iWeapon;
+    private Weapon weapon;
+
+    public Fighter(String name, int HP, Weapon weapon) {
+        super(name, HP);
+        this.weapon = weapon;
     }
 
-    public IWeapon getiWeapon() {
-        return this.iWeapon;
+    public Weapon getWeapon() {
+        return this.weapon;
     }
 
-    public void setiWeapon(IWeapon iWeapon) {
-        this.iWeapon = iWeapon;
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
-    public String attack(Enemy enemy){
-        enemy.setHealthPoints(enemy.getHealthPoints() - this.iWeapon.damageValue()) ;
-//        return "You have attacked " + enemy.getName() + " HP remaining " + enemy.getHealthPoints();
-        return String.format("You have attacked %s HP remaining %s",enemy.getName(), String.valueOf(enemy.getHealthPoints()));
+    public int getDamage(){
+        return getWeapon().getDamageValue();
     }
 
+    public int dealRandomDamage(){
+        Random rand = new Random();
+        return rand.nextInt(getDamage() + 1);
+    }
+
+    public String attack (Enemy enemy){
+        int randomDamage = dealRandomDamage();
+        enemy.setEnemyHP(enemy.getEnemyHP() - randomDamage);
+        return "You have dealt a crippling blow of " + randomDamage +" damage.\nYour enemy will know fear: "+enemy.getEnemyHP()+"HP";
+    }
 
 }

@@ -1,17 +1,8 @@
 package weapon;
 
-import behaviours.IWeapon;
-
-public class Sword implements IWeapon {
-
-    private int damageValue;
+public class Sword extends Weapon {
 
     public Sword() {
-        this.damageValue = 40;
-    }
-
-
-    public int damageValue() {
-        return this.damageValue;
+        super(40, "sword");
     }
 }

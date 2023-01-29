@@ -1,11 +1,17 @@
 package player;
 
-import behaviours.IWeapon;
+import behaviours.IBattleCry;
+import room.Room;
+import weapon.Weapon;
 
-public class Barbarian extends Fighter{
+public class Barbarian extends Fighter implements IBattleCry {
 
+    public Barbarian(String name, Weapon weapon) {
+        super(name, 120, weapon);
+    }
 
-    public Barbarian(String name, int healthPoints, IWeapon iWeapon) {
-        super(name, 100, iWeapon);
+    @Override
+    public String getBattleCry() {
+        return getName() + ": I am here for your knees";
     }
 }
