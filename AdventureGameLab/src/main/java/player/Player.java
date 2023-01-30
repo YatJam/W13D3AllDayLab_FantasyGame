@@ -56,7 +56,7 @@ public abstract class Player implements IBattleCry, IAttack {
             currentRoom.removeRandomEncounter();
             return "The gods smile upon you, you have collected " + treasure.getName() + ".\n";
         } else {
-            return "Like your soul seeking salvation, there is no treasure in this room";
+            return "Like your soul seeking salvation, there is no treasure in this room.";
         }
     }
     public void addToPack(Treasure treasure){
@@ -69,7 +69,7 @@ public abstract class Player implements IBattleCry, IAttack {
 
     public String searchRoom(){
         if(currentRoom.getIRandomEncounter() == null){
-            return "You do not perceive there to be anything of value in the room\n";
+            return "You do not perceive there to be anything of value in the room.\n";
         } else {
             return currentRoom.getIRandomEncounter().randomEvent();
         }
@@ -96,7 +96,7 @@ public abstract class Player implements IBattleCry, IAttack {
                 result = "You've eaten some sweet choccies and feel a new life grown inside you.\n";
                 break;
             } else if((item.getName()).equals("malteasers")&& HP >= 25){
-                System.out.println("You could eat some delicious choccies but they will not offer any regenerative benefit at your current vigor");
+                System.out.println("You could eat some delicious choccies but they will not offer any regenerative benefit at your current vigor.");
             }
         }
         return result;

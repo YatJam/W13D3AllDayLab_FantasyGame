@@ -9,9 +9,7 @@ public class Barbarian extends Fighter implements IBattleCry {
     public Barbarian(String name, Weapon weapon) {
         super(name, 120, weapon);
     }
-
-    @Override
     public String getBattleCry() {
-        return getName() + ": I am here for your knees";
+        return getName() + ": I am here for your knees!";
     }
 }

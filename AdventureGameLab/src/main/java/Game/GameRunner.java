@@ -60,7 +60,7 @@ public class GameRunner {
         Scanner scan = new Scanner(System.in);
 
 
-        System.out.println("Welcome, brave adventurer! What's your name?");
+        System.out.println("Welcome, brave traveller! What's your name?");
         String playerName = scan.nextLine();
 
         System.out.println("Greetings, " + playerName + "!");
@@ -68,13 +68,13 @@ public class GameRunner {
 
         String decision;
         do {
-            System.out.println("Our castle has been plagued with unknown horrors, can you save us?");
+            System.out.println("Our village has been plagued with nightmarish constructs, can you help us?");
             System.out.println("Y/N");
             decision = scan.nextLine();
         } while (!(decision.matches("Y|N")));
 
         if (decision.equals("Y")) {
-            System.out.println("Ah my sweet chicken, thank you for your offering your soul...\n");
+            System.out.println("Ah my sweet chicken, thank you for your offering your soul...\n\nThe Light has found a new hero.\n----------------------------\n");
         } else {
             System.out.println("Ok, well bye then...\nGAME OVER");
             System.exit(0);
@@ -86,7 +86,7 @@ public class GameRunner {
             heroType = scan.nextLine();
         } while (!(heroType.matches("Barbarian|Dwarf|Knight")));
 
-        System.out.println("You will need a weapon to fight these denizens of evil!");
+        System.out.println("You will need a weapon to fight the denizens of evil!");
 
         do {
             System.out.println("Pick one of the options: axe, club or sword.");

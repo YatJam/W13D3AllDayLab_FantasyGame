@@ -16,7 +16,7 @@ public class Combat {
             System.out.println(enemy1.getBattleCry());
             System.out.println(enemy1.attack(player1));
             if(player1.getHealthPoints() <= 0){
-                result = "You have been slain by the horrors that dwell within the dark.\nYour body and soul have been bound to the dark legion!\nGAME OVER";
+                result = "You have been slain by the horrors that dwell within the dark.\nYour body and soul have been bound to the dark legion!\n\nThe Light will find another hero...\n--------------------------------------------\nGAME OVER";
                 break;
             }
             System.out.println(player1.getBattleCry());

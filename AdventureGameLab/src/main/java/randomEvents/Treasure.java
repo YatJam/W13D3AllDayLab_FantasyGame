@@ -28,7 +28,7 @@ public class Treasure implements IRandomEncounter {
 
     @Override
     public String randomEvent() {
-        return "You have found a wooden chest that draws your curiosity";
+        return "You have found a wooden chest that draws your curiosity.";
     }
 
     @Override

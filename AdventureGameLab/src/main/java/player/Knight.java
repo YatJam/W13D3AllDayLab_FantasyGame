@@ -12,6 +12,6 @@ public class Knight extends Fighter implements IBattleCry {
 
     @Override
     public String getBattleCry() {
-        return getName() + ": I will tell your mother about this";
+        return getName() + ": I will tell your mother about this!";
     }
 }
