@@ -27,6 +27,10 @@ public class GameManager {
         return this.dungeon;
     }
 
+    public int getCurrentRoomNumber(){
+        return this.currentRoomNumber;
+    }
+
     public void playerMoveToNextRoom(Player player1){
         this.dungeon.getRoomList().get(currentRoomNumber).removePlayerFromRoom(player1);
         this.currentRoomNumber += 1;

@@ -28,7 +28,7 @@ public class GameRunner {
     Weapon weapon = null;
     Boolean exit = false;
     Player player1 = null;
-    int currentRoomNumber = 0;
+//    int currentRoomNumber = 0;
 
     Room startRoom = new Room("A dimly lit room");
     Room randomRoom1 = new Room("Damp Cell");
@@ -131,7 +131,8 @@ public class GameRunner {
         System.out.println("\nYOU ARE IN ANOTHER ROOM!");
 
         GameManager gameManager = new GameManager(dungeon, player1);
-     gameManager.playerMoveToNextRoom(player1);
+        gameManager.playerMoveToNextRoom(player1);
+        System.out.println();
 
         while (!(exit)){
             ArrayList<String> availableActions = new ArrayList<>();
@@ -159,24 +160,24 @@ public class GameRunner {
                         System.out.println(combat.battle(player1));
                     }
                     break;
-                case "exit room": if(currentRoomNumber < dungeon.getRoomList().size()){
-                    do {
-                    System.out.println("Pick one of the following exits:" + ExitMaker.randomExitGenerator());
-                    firstExit = scan.nextLine();
-                    } while (!(firstExit.matches("North|East|South|West")));
-                    System.out.println("You stumble towards what you perceive is " + firstExit + " and exit the room.");
-                        if(currentRoomNumber != dungeon.getRoomList().size()){
-                            gameManager.playerMoveToNextRoom(player1);}
-                } else {
-                    System.out.println("In the dim haze of a rotting corridor, you catch a faint breeze of cool air through the miasma.\nHearing otherworldly abominations call out in the darkness, you frantically follow the sent.../nTurning a corner, you catch a glimpse of a stairwell winding upwards\nYou seek your salvation\n\nGAME OVER");
-                    System.out.println("Items collected:");
-                    System.out.println("----------------------------------------");
-                    ArrayList< Treasure> pack = player1.getPack();
-                    int score = 0;
-                    for (Treasure item:pack){
-                        System.out.println("Item: " + item.getName() + ", value: " + item.getValue() + "gp.");
-                        score += item.getValue();
-                    }
+                case "exit room":
+                    if(gameManager.getCurrentRoomNumber() < (dungeon.getRoomList().size()-1)){
+                        do {
+                            System.out.println("Pick one of the following exits:" + ExitMaker.randomExitGenerator());
+                            firstExit = scan.nextLine();
+                        } while (!(firstExit.matches("North|East|South|West")));
+                        System.out.println("You stumble towards what you perceive is " + firstExit + " and exit the room.");
+                                gameManager.playerMoveToNextRoom(player1);
+                    } else {
+                        System.out.println("In the dim haze of a rotting corridor, you catch a faint breeze of cool air through the miasma.\nHearing otherworldly abominations call out in the darkness, you frantically follow the sent.../nTurning a corner, you catch a glimpse of a stairwell winding upwards\nYou seek your salvation\n\nGAME OVER");
+                        System.out.println("Items collected:");
+                        System.out.println("----------------------------------------");
+                        ArrayList< Treasure> pack = player1.getPack();
+                        int score = 0;
+                        for (Treasure item:pack){
+                            System.out.println("Item: " + item.getName() + ", value: " + item.getValue() + "gp.");
+                            score += item.getValue();
+                        }
                     System.out.println("------------------------------");
                     System.out.println("Overall score: " + score + "gp");
                     exit = true;

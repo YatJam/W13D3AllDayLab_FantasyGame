@@ -3,11 +3,11 @@ package randomEvents;
 import java.util.Random;
 
 public enum EnemyType {
-    GOBLIN("a goblin", 40, 7,"Goblin: I'm gonna stab yuz in tha bum"),
-    ORC("an orc", 85, 22, "Orc: Yuz ready for a krumpin"),
-    ZOMBIE("a zombie", 70, 12, "Zombie: mmmmmmm mmmm uuur rrrrrr uuugghhh"),
+    GOBLIN("a goblin", 40, 7,"Goblin: I'm gonna stab yuz in tha bum!"),
+    ORC("an orc", 85, 22, "Orc: Yuz ready for a krumpin!"),
+    ZOMBIE("a zombie", 70, 12, "Zombie: mmmmmmm mmmm uuur rrrrrr uuugghhh..."),
     ELDRITCHORROR("an eldritch horror", 160, 35, "Eldritch Horror: *$^@£^%)$%£@@! )*&$&@&$(£@"),
-    FALLENHERO("a fallen hero", 200, 26, "Fallen Hero: Give in to the dark gods, let the voices open your mind");
+    FALLENHERO("a fallen hero", 200, 26, "Fallen Hero: Give in to the dark gods, let the voices open your mind...");
 
     private String type;
     private int enemyHP;
